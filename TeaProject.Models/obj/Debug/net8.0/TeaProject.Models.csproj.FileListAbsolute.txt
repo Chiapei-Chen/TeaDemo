@@ -1,0 +1,11 @@
+C:\Users\陳佳沛\Desktop\TeaProject\TeaProject.Models\bin\Debug\net8.0\TeaProject.Models.deps.json
+C:\Users\陳佳沛\Desktop\TeaProject\TeaProject.Models\bin\Debug\net8.0\TeaProject.Models.dll
+C:\Users\陳佳沛\Desktop\TeaProject\TeaProject.Models\bin\Debug\net8.0\TeaProject.Models.pdb
+C:\Users\陳佳沛\Desktop\TeaProject\TeaProject.Models\obj\Debug\net8.0\TeaProject.Models.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\陳佳沛\Desktop\TeaProject\TeaProject.Models\obj\Debug\net8.0\TeaProject.Models.AssemblyInfoInputs.cache
+C:\Users\陳佳沛\Desktop\TeaProject\TeaProject.Models\obj\Debug\net8.0\TeaProject.Models.AssemblyInfo.cs
+C:\Users\陳佳沛\Desktop\TeaProject\TeaProject.Models\obj\Debug\net8.0\TeaProject.Models.csproj.CoreCompileInputs.cache
+C:\Users\陳佳沛\Desktop\TeaProject\TeaProject.Models\obj\Debug\net8.0\TeaProject.Models.dll
+C:\Users\陳佳沛\Desktop\TeaProject\TeaProject.Models\obj\Debug\net8.0\refint\TeaProject.Models.dll
+C:\Users\陳佳沛\Desktop\TeaProject\TeaProject.Models\obj\Debug\net8.0\TeaProject.Models.pdb
+C:\Users\陳佳沛\Desktop\TeaProject\TeaProject.Models\obj\Debug\net8.0\ref\TeaProject.Models.dll
