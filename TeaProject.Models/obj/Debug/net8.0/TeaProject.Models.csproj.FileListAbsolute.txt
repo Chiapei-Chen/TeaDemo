@@ -9,3 +9,4 @@ C:\Users\陳佳沛\Desktop\TeaProject\TeaProject.Models\obj\Debug\net8.0\TeaProj
 C:\Users\陳佳沛\Desktop\TeaProject\TeaProject.Models\obj\Debug\net8.0\refint\TeaProject.Models.dll
 C:\Users\陳佳沛\Desktop\TeaProject\TeaProject.Models\obj\Debug\net8.0\TeaProject.Models.pdb
 C:\Users\陳佳沛\Desktop\TeaProject\TeaProject.Models\obj\Debug\net8.0\ref\TeaProject.Models.dll
+C:\Users\陳佳沛\Desktop\TeaProject\TeaProject.Models\obj\Debug\net8.0\TeaProject.Models.sourcelink.json

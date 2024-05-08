@@ -267,3 +267,4 @@ C:\Users\陳佳沛\Desktop\TeaProject\TeaProject\bin\Debug\net8.0\TeaProject.Uti
 C:\Users\陳佳沛\Desktop\TeaProject\TeaProject\bin\Debug\net8.0\TeaProject.DataAccess.pdb
 C:\Users\陳佳沛\Desktop\TeaProject\TeaProject\bin\Debug\net8.0\TeaProject.Models.pdb
 C:\Users\陳佳沛\Desktop\TeaProject\TeaProject\bin\Debug\net8.0\TeaProject.Utility.pdb
+C:\Users\陳佳沛\Desktop\TeaProject\TeaProject\obj\Debug\net8.0\TeaProject.sourcelink.json

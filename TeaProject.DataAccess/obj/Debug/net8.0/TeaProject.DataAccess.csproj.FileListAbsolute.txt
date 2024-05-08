@@ -17,3 +17,4 @@ C:\Users\陳佳沛\Desktop\TeaProject\TeaProject.DataAccess\obj\Debug\net8.0\ref
 C:\Users\陳佳沛\Desktop\TeaProject\TeaProject.DataAccess\obj\Debug\net8.0\TeaProject.DataAccess.pdb
 C:\Users\陳佳沛\Desktop\TeaProject\TeaProject.DataAccess\obj\Debug\net8.0\TeaProject.DataAccess.genruntimeconfig.cache
 C:\Users\陳佳沛\Desktop\TeaProject\TeaProject.DataAccess\obj\Debug\net8.0\ref\TeaProject.DataAccess.dll
+C:\Users\陳佳沛\Desktop\TeaProject\TeaProject.DataAccess\obj\Debug\net8.0\TeaProject.DataAccess.sourcelink.json

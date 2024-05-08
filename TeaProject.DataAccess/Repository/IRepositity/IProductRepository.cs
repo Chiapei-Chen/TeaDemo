@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TeaProject.Models;
 
 namespace TeaProject.DataAccess.Repository.IRepositity
 {
-	public interface IUnitOfWork
+
+    public interface IProductRepository:IRepository<Product>
 	{
-		ICategoryRepository CategoryRepository { get; }
-        IProductRepository ProductRepository { get; }
-        void Save();
+		void Update(Product obj);
+	//	void Save();
 	}
 }
