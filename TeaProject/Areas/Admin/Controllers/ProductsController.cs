@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using TeaProject.DataAccess.Data;
 using TeaProject.DataAccess.Repository.IRepositity;
 using TeaProject.Models;
+using TeaProject.Models.ViewModels;
 
 namespace TeaProject.Areas.Admin.Controllers
 {
@@ -19,93 +20,84 @@ namespace TeaProject.Areas.Admin.Controllers
         public ProductsController(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
+
         }
 
         // GET: Admin/Products
-        public  IActionResult Index()
+        public IActionResult Index()
         {
-         
-            List<Product> objCategoryList= _unitOfWork.ProductRepository.GetAll().ToList();
+
+            List<Product> objCategoryList = _unitOfWork.ProductRepository.GetAll().ToList();
             return View(objCategoryList);
         }
 
-        // GET: Admin/Products/Details/5
-        //public async Task<IActionResult> Details(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return NotFound();
-        //    }
 
-        //    var product = await _context.Products
-        //        .FirstOrDefaultAsync(m => m.Id == id);
-        //    if (product == null)
-        //    {
-        //        return NotFound();
-        //    }
 
-        //    return View(product);
-        //}
+        public IActionResult Upsert(int? id) {
 
-        // GET: Admin/Products/Create
-        public IActionResult Create()
-        {
-            return View();
+            // 建立 ProductVM 物件
+            var productVM = new ProductVM
+            {
+                Product = new Product(),
+                CategoryList = _unitOfWork.CategoryRepository.GetAll()
+                                    .Select(c => new SelectListItem
+                                    {
+                                        Text = c.Name,
+                                        Value = c.Id.ToString()
+                                    })
+            };
+            if (id == null || id == 0)
+            {
+                //新增
+                return View(productVM);
+            }
+            else {
+                //編輯
+                productVM.Product = _unitOfWork.ProductRepository.Get(u => u.Id == id);
+            }
+            return View(productVM);
         }
-
-        // POST: Admin/Products/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult Create([Bind("Id,Name,Size,Price,Temperature")] Product product)
+        public IActionResult Upsert(ProductVM productVM)
         {
             if (ModelState.IsValid)
             {
-                _unitOfWork.ProductRepository.Add(product);
-              _unitOfWork.Save();
+                if (productVM.Product.Id == 0|| productVM.Product.Id==null)
+                {
+                    _unitOfWork.ProductRepository.Add(productVM.Product);
+                    _unitOfWork.Save();
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    productVM.CategoryList =
+                     _unitOfWork.CategoryRepository.GetAll().Select(c =>
+                     new SelectListItem {
+                     
+                         Text = c.Name,
+                         Value = c.Id.ToString()
+                     });
+                    productVM.Product=new Product{ 
+                     Size=productVM.Product.Size,
+                     Name=productVM.Product.Name,
+                     Price=productVM.Product.Price,
+                     Temperature=productVM.Product.Temperature,
+                     CategoryId=productVM.Product.CategoryId,
+                    };
+                    _unitOfWork.ProductRepository.Update(productVM.Product);
+                    _unitOfWork.Save();
+                    return RedirectToAction("Index");
+                }
 
-                return RedirectToAction(nameof(Index));
+              
+                
             }
-            return View(product);
+       
+         
+            return View(productVM);
         }
+     
 
-        // GET: Admin/Products/Edit/5
-        public IActionResult Edit(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            Product? productFromDb = _unitOfWork.ProductRepository.Get(u=>u.Id==id);
-            if (productFromDb == null)
-            {
-                return NotFound();
-            }
-            return View(productFromDb);
-        }
-
-        // POST: Admin/Products/Edit/5
-      
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Size,Price,Temperature")] Product product)
-        {
-            if (id != product.Id)
-            {
-                return NotFound();
-            }
-
-            if (ModelState.IsValid)
-            {
-
-                _unitOfWork.ProductRepository.Update(product);
-                _unitOfWork.Save();
-                return RedirectToAction("index");
-            }
-            return View();
-        }
 
         // GET: Admin/Products/Delete/5
         public IActionResult Delete(int? id)

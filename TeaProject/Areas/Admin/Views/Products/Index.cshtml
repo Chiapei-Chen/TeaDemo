@@ -1,4 +1,6 @@
-﻿@model IEnumerable<Product>
+﻿@model IEnumerable<TeaProject.Models.Product>
+
+
 
 @{
     ViewData["Title"] = "Index";
@@ -7,7 +9,7 @@
 <h1>Index</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Upsert">Create New</a>
 </p>
 <table class="table">
     <thead>
@@ -23,6 +25,9 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Temperature)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CategoryId)
             </th>
             <th></th>
         </tr>
@@ -42,9 +47,12 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Temperature)
             </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CategoryId)
+                </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Upsert" asp-route-id="@item.Id">Edit</a> |
+               
                 <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
             </td>
         </tr>

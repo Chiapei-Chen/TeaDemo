@@ -1,0 +1,72 @@
+﻿@model TeaProject.Models.ViewModels.ProductVM
+
+
+
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Upsert" enctype="multipart/form-data" >
+         @*    //它允許在表單中包含二進制文件數據 *@
+            <input asp-for="Product.Id" hidden/>
+
+       
+                <h2 class="text-primary"> @(
+                    Model.Product.Id != 0 ? "編輯":"新增")產品</h2>
+            
+
+    
+            <div class="form-group">
+                <label asp-for="Product.Name" class="control-label"></label>
+                <input asp-for="Product.Name" class="form-control" />
+                <span asp-validation-for="Product.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Product.Size" class="control-label"></label>
+                <input asp-for="Product.Size" class="form-control" />
+                <span asp-validation-for="Product.Size" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Product.Price" class="control-label"></label>
+                <input asp-for="Product.Price" class="form-control" />
+                <span asp-validation-for="Product.Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Product.Temperature" class="control-label"></label>
+                <input asp-for="Product.Temperature" class="form-control" />
+                <span asp-validation-for="Product.Temperature" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Product.CategoryId" class="control-label"></label>
+                <select asp-for="Product.CategoryId" class="form-control" asp-items="Model.CategoryList">
+                    <option disabled selected>選擇類別</option>
+                    @foreach (var category in Model.CategoryList)
+                    {
+                        <option value="@category.Value" >@category.Text</option>
+                    }
+                </select>
+                <span asp-validation-for="Product.CategoryId" class="text-danger"></span>
+            </div>
+           @*  <div class="form-group">
+                <label asp-for="Product.ImageUrl" class="control-label"></label>
+                <input asp-for="Product.ImageUrl" class="form-control" />
+                <span asp-validation-for="Product.ImageUrl" class="text-danger"></span>
+            </div> *@
+            <div class="form-group">
+                @if (Model.Product.Id != 0)
+                {
+                    <button type="submit" class="btn btn-primary" >編輯完成</button>
+                }
+                else
+                {
+                    <button type="submit" class="btn btn-primary">新增</button>
+                }
+               
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

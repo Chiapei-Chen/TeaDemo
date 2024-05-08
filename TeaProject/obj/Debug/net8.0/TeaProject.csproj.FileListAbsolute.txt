@@ -268,3 +268,6 @@ C:\Users\陳佳沛\Desktop\TeaProject\TeaProject\bin\Debug\net8.0\TeaProject.Dat
 C:\Users\陳佳沛\Desktop\TeaProject\TeaProject\bin\Debug\net8.0\TeaProject.Models.pdb
 C:\Users\陳佳沛\Desktop\TeaProject\TeaProject\bin\Debug\net8.0\TeaProject.Utility.pdb
 C:\Users\陳佳沛\Desktop\TeaProject\TeaProject\obj\Debug\net8.0\TeaProject.sourcelink.json
+C:\Users\陳佳沛\Desktop\TeaProject\TeaProject\obj\Debug\net8.0\TeaProject.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\陳佳沛\Desktop\TeaProject\TeaProject\bin\Debug\net8.0\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\陳佳沛\Desktop\TeaProject\TeaProject\bin\Debug\net8.0\Newtonsoft.Json.Bson.dll

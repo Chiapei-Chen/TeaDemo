@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using TeaProject.Models;
 
 
+
 namespace TeaProject.DataAccess.Data;
 
 public partial class TeaProject0504Context : DbContext
@@ -28,6 +29,7 @@ public partial class TeaProject0504Context : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+
         modelBuilder.Entity<Category>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("PK__Category__3214EC07E15D4861");
@@ -39,6 +41,7 @@ public partial class TeaProject0504Context : DbContext
                 .HasMaxLength(20)
                 .IsUnicode(false);
         });
+
         modelBuilder.Entity<Product>().HasData(
        new Product
        {
@@ -47,7 +50,8 @@ public partial class TeaProject0504Context : DbContext
            Size = "大杯",
            Price = 30,
            Temperature = "熱飲",
-           CategoryId = 1
+           CategoryId = 1,
+           ImageUrl=""
        },
        new Product
        {
@@ -56,7 +60,8 @@ public partial class TeaProject0504Context : DbContext
            Size = "大杯",
            Price = 30,
            Temperature = "熱飲",
-               CategoryId = 2
+               CategoryId = 2,
+                   ImageUrl = ""
        },
        new Product
        {
@@ -65,8 +70,11 @@ public partial class TeaProject0504Context : DbContext
            Size = "大杯",
            Price = 40,
            Temperature = "熱飲",
-           CategoryId = 1
+           CategoryId = 1,
+           ImageUrl = ""
        }
+
+
    );
 
         OnModelCreatingPartial(modelBuilder);

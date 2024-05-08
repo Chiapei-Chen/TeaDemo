@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TeaProject.DataAccess.Data;
 
@@ -11,9 +12,11 @@ using TeaProject.DataAccess.Data;
 namespace TeaProject.DataAccess.Migrations
 {
     [DbContext(typeof(TeaProject0504Context))]
-    partial class TeaProject0504ContextModelSnapshot : ModelSnapshot
+    [Migration("20240508030200_addImageUrl")]
+    partial class addImageUrl
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -53,6 +56,7 @@ namespace TeaProject.DataAccess.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("ImageUrl")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
@@ -71,6 +75,8 @@ namespace TeaProject.DataAccess.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CategoryId");
 
                     b.ToTable("Products");
 
@@ -105,6 +111,17 @@ namespace TeaProject.DataAccess.Migrations
                             Size = "大杯",
                             Temperature = "熱飲"
                         });
+                });
+
+            modelBuilder.Entity("TeaProject.Models.Product", b =>
+                {
+                    b.HasOne("TeaProject.Models.Category", "Category")
+                        .WithMany()
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Category");
                 });
 #pragma warning restore 612, 618
         }
