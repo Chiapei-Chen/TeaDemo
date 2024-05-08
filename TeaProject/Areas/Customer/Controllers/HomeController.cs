@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using TeaProject.DataAccess.Repository.IRepositity;
 using TeaProject.Models;
 
 namespace TeaProject.Areas.Customer.Controllers
@@ -9,14 +10,18 @@ namespace TeaProject.Areas.Customer.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        private readonly IUnitOfWork _unitOfWork;
+        public HomeController(ILogger<HomeController> logger,IUnitOfWork unitOfWork)
         {
             _logger = logger;
+            _unitOfWork=unitOfWork;
         }
 
         public IActionResult Index()
         {
-            return View();
+            IEnumerable<Product> productList=
+                _unitOfWork.ProductRepository.GetAll();
+            return View(productList);
         }
 
         public IActionResult Privacy()
