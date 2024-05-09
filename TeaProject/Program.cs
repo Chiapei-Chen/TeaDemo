@@ -4,13 +4,18 @@ using TeaProject.DataAccess.Repository;
 using TeaProject.DataAccess.Repository.IRepositity;
 
 using TeaProject.DataAccess.Repository;
+using Microsoft.AspNetCore.Identity;
+using TeaProject.Models;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<TeaProject0504Context>
 	(options => options.UseSqlServer(builder.Configuration.GetConnectionString("TeaProject0504DBContext")));
-//±NRepository¼g¶i±M®× µù¥U¨Ì¿àª`¤Jªº¬ÛÃöªA°È
+
+builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<TeaProject0504Context>();
+
+//ï¿½NRepositoryï¿½gï¿½iï¿½Mï¿½ï¿½ ï¿½ï¿½ï¿½Uï¿½Ì¿ï¿½`ï¿½Jï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Aï¿½ï¿½
 
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
@@ -30,8 +35,10 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();  //åœ¨æˆæ¬Šä¹‹å‰æ·»åŠ èº«åˆ†é©—è­‰
 app.UseAuthorization();
 
+app.MapRazorPages();  //å•Ÿç”¨Razor 
 app.MapControllerRoute(
 	name: "default",
 	pattern: "{area=Customer}/{controller=Home}/{action=Index}/{id?}");

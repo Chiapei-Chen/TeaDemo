@@ -9,3 +9,4 @@ C:\Users\陳佳沛\Desktop\TeaProject\TeaProject.Utility\obj\Debug\net8.0\TeaPro
 C:\Users\陳佳沛\Desktop\TeaProject\TeaProject.Utility\obj\Debug\net8.0\refint\TeaProject.Utility.dll
 C:\Users\陳佳沛\Desktop\TeaProject\TeaProject.Utility\obj\Debug\net8.0\TeaProject.Utility.pdb
 C:\Users\陳佳沛\Desktop\TeaProject\TeaProject.Utility\obj\Debug\net8.0\ref\TeaProject.Utility.dll
+C:\Users\陳佳沛\Desktop\TeaProject\TeaProject.Utility\obj\Debug\net8.0\TeaProject.Utility.sourcelink.json
