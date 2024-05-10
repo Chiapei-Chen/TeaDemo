@@ -10,6 +10,9 @@ namespace TeaProject.DataAccess.Repository.IRepositity
 	{
 		ICategoryRepository CategoryRepository { get; }
         IProductRepository ProductRepository { get; }
+
+		IShoppingCartRepository ShoppingCartRepository { get; }
+        IApplicationUserRepository ApplicationUserRepository { get; }
         void Save();
 	}
 }

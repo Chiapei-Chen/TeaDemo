@@ -10,3 +10,4 @@ C:\Users\陳佳沛\Desktop\TeaProject\TeaProject.Utility\obj\Debug\net8.0\refint
 C:\Users\陳佳沛\Desktop\TeaProject\TeaProject.Utility\obj\Debug\net8.0\TeaProject.Utility.pdb
 C:\Users\陳佳沛\Desktop\TeaProject\TeaProject.Utility\obj\Debug\net8.0\ref\TeaProject.Utility.dll
 C:\Users\陳佳沛\Desktop\TeaProject\TeaProject.Utility\obj\Debug\net8.0\TeaProject.Utility.sourcelink.json
+C:\Users\陳佳沛\Desktop\TeaProject\TeaProject.Utility\obj\Debug\net8.0\TeaProject.Utility.csproj.AssemblyReference.cache

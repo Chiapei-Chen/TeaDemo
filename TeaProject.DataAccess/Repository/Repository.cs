@@ -36,9 +36,19 @@ namespace TeaProject.DataAccess.Repository
 			query = query.Where(filter);
 			return query.FirstOrDefault();
 		}
-		public IEnumerable<T> GetAll()
+		public IEnumerable<T> GetAll(Expression<Func<T, bool>>? filter = null, string? includeProperties = null)
 		{
 			IQueryable<T> query = dbSet;
+			if(filter != null)
+			{
+				query=query.Where(filter);
+			}
+			if (!string.IsNullOrEmpty(includeProperties))
+			{
+				foreach (var includeProp in includeProperties.Split(new char[] { ','},StringSplitOptions.RemoveEmptyEntries)) {
+					query = query.Include(includeProp);
+				}
+			}
 			return query.ToList();
 		}
 		public void Remove(T entity) { 

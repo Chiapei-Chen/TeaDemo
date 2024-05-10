@@ -19,10 +19,7 @@ namespace TeaProject.DataAccess.Repository
 			_context = context;
 		}
 
-		//public void save()
-		//{
-		//	_context.SaveChanges();
-		//}
+	
 
 		public void Update(Product obj)
 		{

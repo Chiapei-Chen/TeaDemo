@@ -2,16 +2,19 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using TeaProject.DataAccess.Data;
 using TeaProject.DataAccess.Repository.IRepositity;
 using TeaProject.Models;
+using TeaProject.Utility;
 
 namespace TeaProject.Areas.Admin.Controllers
 {
 	[Area("Admin")]
+    [Authorize(Roles=SD.Role_Admin)]
 	public class CategoriesController : Controller
     {
         //Area
@@ -36,7 +39,7 @@ namespace TeaProject.Areas.Admin.Controllers
 
 
         // GET: Categories/Create
-        public IActionResult Create()
+        public IActionResult Upsert()
         {
             return View();
         }
@@ -132,9 +135,6 @@ namespace TeaProject.Areas.Admin.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        //private bool CategoryExists(int id)
-        //{
-        //    return _context.Categories.Any(e => e.Id == id);
-        //}
+       
     }
 }

@@ -14,12 +14,17 @@ namespace TeaProject.DataAccess.Repository
 		private TeaProject0504Context _context;
 		public ICategoryRepository CategoryRepository { get; private set; }
         public IProductRepository ProductRepository { get; private set; }
+        public IShoppingCartRepository ShoppingCartRepository { get; private set; }
+
+        public IApplicationUserRepository ApplicationUserRepository { get; private set; }
         public UnitOfWork(TeaProject0504Context context)
 		{
 
 			_context = context;
 			CategoryRepository = new CategoryRepository(_context);
             ProductRepository = new ProductRepository(_context);
+            ShoppingCartRepository= new ShoppingCartRepository(_context);
+
         }
 
 		public void Save()
