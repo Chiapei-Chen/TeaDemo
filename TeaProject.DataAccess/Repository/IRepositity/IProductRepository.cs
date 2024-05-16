@@ -10,7 +10,10 @@ namespace TeaProject.DataAccess.Repository.IRepositity
 
     public interface IProductRepository:IRepository<Product>
 	{
-		void Update(Product obj);
-	//	void Save();
-	}
+  
+        void Update(Product obj);
+  
+        Task<Product> GetProductByIdAsync(int productId);
+        Task<decimal?> GetProductPriceAsync(int productId, string size);
+    }
 }

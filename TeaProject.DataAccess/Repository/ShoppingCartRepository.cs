@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using TeaProject.DataAccess.Data;
@@ -24,6 +26,19 @@ namespace TeaProject.DataAccess.Repository
 		{
 			_context.Update(obj);
 		}
-	}
+        // 實現介面中的 Where 方法，用於條件查詢
+        public IQueryable<ShoppingCart> Where(Expression<Func<ShoppingCart, bool>> predicate)
+        {
+            return _context.Set<ShoppingCart>().Where(predicate);
+        }
+
+        public IQueryable<TEntity> Include<TEntity, TProperty>(
+            IQueryable<TEntity> source,
+            Expression<Func<TEntity, TProperty>> navigationPropertyPath)
+            where TEntity : class
+        {
+            return source.Include(navigationPropertyPath);
+        }
+    }
 
 }

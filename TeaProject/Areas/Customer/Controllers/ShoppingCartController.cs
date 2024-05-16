@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 using TeaProject.DataAccess.Repository.IRepositity;
+using TeaProject.Models;
 using TeaProject.Models.ViewModels;
 
 namespace TeaProject.Areas.Customer.Controllers
@@ -16,23 +17,13 @@ namespace TeaProject.Areas.Customer.Controllers
         {
             _unitOfWork = unitOfWork;
         }
+
         public IActionResult Index()
         {
-            var claimsIdentity=(ClaimsIdentity)User.Identity;
-            var userId = claimsIdentity.FindFirst
-            (ClaimTypes.NameIdentifier).Value;
-            ShoppingCartVM = new()
-            {
-                ShoppingCartList=_unitOfWork.ShoppingCartRepository
-                .GetAll(u=>u.ApplicationUserId==userId,includeProperties:"Product")
+            return View();
 
-            };
-            foreach (var cart in ShoppingCartVM.ShoppingCartList) {
-                ShoppingCartVM.OrderTotal += (double)(cart.Product.Price * cart.Count);
-            }
-            return View(ShoppingCartVM);
-
-          
         }
+      
     }
+
 }

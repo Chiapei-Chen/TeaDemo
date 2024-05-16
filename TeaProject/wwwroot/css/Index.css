@@ -1,0 +1,226 @@
+﻿.ice-options label {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.ice-options input[type="radio"] {
+    display: none;
+}
+
+.ice-options label span {
+    display: inline-block;
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.ice-options input[type="radio"]:checked + span {
+    background-color: #9fc6d1;
+}
+
+/* 甜度 */
+.sweetness-options label {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.sweetness-options input[type="radio"] {
+    display: none;
+}
+
+.sweetness-options label span.button-style {
+    display: inline-block;
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+
+    .sweetness-options label span.button-style:hover {
+        background-color: #f0f0f0;
+    }
+
+.sweetness-options input[type="radio"]:checked + span.button-style {
+    background-color: #9fc6d1;
+    border-color: #bbb;
+}
+/* 加料 */
+.toppings-options label {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.toppings-options input[type="radio"] {
+    display: none;
+}
+
+.toppings-options label span.button-style {
+    display: inline-block;
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+    .toppings-options label span.button-style:hover {
+        background-color: #f0f0f0;
+    }
+
+.toppings-options input[type="radio"]:checked + span.button-style {
+    background-color: #9fc6d1;
+    border-color: #bbb;
+}
+/* 容量 */
+.size-options label {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.size-options input[type="radio"] {
+    display: none;
+}
+
+.size-options label span.button-style {
+    display: inline-block;
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+    .size-options label span.button-style:hover {
+        background-color: #97b1ea;
+    }
+
+.size-options input[type="radio"]:checked + span.button-style {
+    background-color: #c68383;
+    border-color: #1f1919;
+}
+/* 數字 */
+.quantity-input {
+    display: inline-flex;
+    align-items: center;
+}
+
+.quantity-button {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    font-size: 16px;
+    text-align: center;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    border-radius: 4px;
+}
+
+.quantity-field {
+    width: 50px;
+    height: 30px;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin: 0 5px;
+    padding: 0;
+}
+
+.quantity-button:hover {
+    background-color: #ee7575;
+}
+
+.quantity-button:active {
+    background-color: #abd47b;
+}
+.nav-tabs a {
+    color: #53565C;
+    padding-left: 6px;
+    padding-right: 6px;
+    padding-top: 5px;
+    text-decoration: none;
+    margin: 10px;
+}
+/*菜單按鈕*/
+.tab-pane button {
+    padding: 20px;
+    border: 1px solid gray;
+    margin-top: 5px;
+    margin-left: 2px;
+    color: #53565C;
+}
+
+.nav-tabs a:hover {
+    color: black;
+    margin: 10px;
+    background-color: azure;
+}
+
+.fade:not(.show) {
+    opacity: 1;
+}
+
+.first {
+    background-color: #BFC2CB;
+    padding: 5px;
+    size: 25px;
+}
+
+.f_title {
+    margin-right: 10px;
+    color: black;
+}
+
+.second {
+    background-color: white;
+    height: 390px;
+}
+
+.leftblock, .rightblock {
+    position: relative;
+    height: 550px;
+    background-color: white;
+    margin: 5px;
+}
+
+.third {
+    background-color: #97A5C0;
+    height: 100px;
+    padding-top: 5px;
+    padding-left: 5px;
+    position: relative;
+}
+
+.function_button {
+    position: relative width: 120px;
+    height: 40px;
+    border: 1px solid rgb(53, 90, 170);
+    margin: 5px;
+    background-color: rgb(88, 154, 246);
+    color: white;
+    border-radius: 20%;
+}
+
+.first_munu {
+    height: 50px;
+    background-color: white;
+}
+
+.content1_menu {
+    height: 390px;
+}
+
+.content2_menu {
+    height: 100px;
+    background-color: rgb(207, 222, 255);
+    color: black;
+}
+
+.third_btn {
+    width: 90%;
+    padding: 5px;
+    margin: 5px;
+    background-color: #BFC2CB;
+    border: 1px solid rgb(59, 74, 91);
+    color: black;
+}

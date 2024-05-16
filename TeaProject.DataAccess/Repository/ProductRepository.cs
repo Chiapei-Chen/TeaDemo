@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,13 +19,30 @@ namespace TeaProject.DataAccess.Repository
 		{
 			_context = context;
 		}
+      
 
-	
 
-		public void Update(Product obj)
+        public void Update(Product obj)
 		{
 			_context.Update(obj);
 		}
-	}
+
+
+		public async Task<Product> GetProductByIdAsync(int productid)
+		{ 
+		    return await _context.Products.FirstOrDefaultAsync(p=>p.Id == productid);
+		}
+        public async Task<decimal?> GetProductPriceAsync(int productId, string size)
+        {
+            var product = await _context.Products.FirstOrDefaultAsync(p => p.Id == productId);
+            if (product == null)
+            {
+                return null;
+            }
+
+
+            return product.Price;
+        }
+    }
 
 }

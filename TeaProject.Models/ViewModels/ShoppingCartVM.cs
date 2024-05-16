@@ -12,6 +12,7 @@ namespace TeaProject.Models.ViewModels
 
         public double OrderTotal { get; set; }
 
+        public IEnumerable<Product> ProductList { get; set; } 
 
     }
 }

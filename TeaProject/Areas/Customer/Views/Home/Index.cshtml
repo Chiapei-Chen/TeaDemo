@@ -1,21 +1,394 @@
-﻿@model IEnumerable<Product>
+﻿@model ShoppingCartVM
+@using TeaProject.Models
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+
+@* <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> *@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- Popper.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.3/umd/popper.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="/css/Index.css" />
 
 
-<div class="row">
-	@foreach(var item in Model)
-	{
-		<div class="col-lg-3 col-md-6">
-		<div class="card-body" style="background-color:cornflowerblue;margin:10px;">
-		<div class="p-1">
-		<p>@item.Name@item.Size</p>
-		
-		<p>價格: @item.Price</p>
-		</div>
-		</div>
-		</div>
-		
-
-	}
 
 
-</div>
+<div class="container" style="background-color: #60656C;position:absolute;">
+
+        <div class="row">
+            <div class="col-md-2 col-s-2 col-lg-4">
+                <div class="leftblock">
+                    <div class="first">
+                        <span class="f_title">品名</span>
+                        <span class="f_title">單價</span>
+                        <span class="f_title">數量 </span>
+                        <span class="f_title">總價</span>
+                    </div>
+                    <div class="second"></div>
+                    <div class="third">
+                        <button class="third_btn">複製</button>
+                        <button class="third_btn">刪除</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-10 col-s-10 col-lg-8">
+                <div class="rightblock">
+                    <div class="first_munu">
+                        上方選項          
+                     </div>
+                <div class="second_menu " id="pos-container">
+            
+                     <div id="menu-section">
+                            <ul class="nav nav-tabs">
+                                <li class="active"><a data-toggle="tab" href="#tea">原茶系列</a></li>
+                                <li><a data-toggle="tab" href="#tea1">奶茶系列</a></li>
+                                <li><a data-toggle="tab" href="#tea2">芝士系列</a></li>
+                                <li><a data-toggle="tab" href="#tea3">鮮奶茶系列</a></li>
+                                <li><a data-toggle="tab" href="#tea4">雙重水果系列</a></li>
+                                <li><a data-toggle="tab" href="#tea5">烘吉茶系列</a></li>
+                            </ul>
+
+
+                            <div class="tab-content">
+                                <div id="tea" class="tab-pane fade in active">
+                                    @foreach (var product in Model.ProductList)
+                                    {
+                                        @if (product.CategoryId == 1)
+                                        {
+                                        <button class="product-button" data-product-id="@product.Id">
+                                            @product.Name @product.Size
+                                        </button>
+                                        }
+
+                                    }
+
+                                </div>
+                                <div id="tea1" class="tab-pane fade ">
+                                    @foreach (var product in Model.ProductList)
+                                    {
+                                        @if (product.CategoryId == 2)
+                                        {
+                                        <button class="product-button" data-product-id="@product.Id">
+                                            @product.Name @product.Size
+                                        </button>
+                                        }
+
+                                    }
+                                </div>
+                                <div id="tea2" class="tab-pane fade ">
+                                    @foreach (var product in Model.ProductList)
+                                    {
+                                        @if (product.CategoryId == 3)
+                                        {
+                                        <button class="product-button" data-product-id="@product.Id">
+                                            @product.Name @product.Size
+                                        </button>
+                                        }
+
+                                    }
+                                </div>
+                                <div id="tea3" class="tab-pane fade ">
+                                    @foreach (var product in Model.ProductList)
+                                    {
+                                        @if (product.CategoryId == 4)
+                                        {
+                                        <button class="product-button" data-product-id="@product.Id">
+                                            @product.Name @product.Size
+                                        </button>
+                                        }
+
+                                    }
+                                </div>
+                                <div id="tea4" class="tab-pane fade ">
+                                    @foreach (var product in Model.ProductList)
+                                    {
+                                        @if (product.CategoryId == 5)
+                                        {
+                                        <button class="product-button" data-product-id="@product.Id">
+                                            @product.Name @product.Size
+                                        </button>
+                                        }
+
+                                    }
+                                </div>
+                                <div id="tea5" class="tab-pane fade ">
+                                    @foreach (var product in Model.ProductList)
+                                    {
+                                        @if (product.CategoryId == 6)
+                                        {
+                                        <button class="product-button" data-product-id="@product.Id">
+                                            @product.Name @product.Size
+                                        </button>
+                                        }
+
+                                    }
+                                </div>
+                            </div>
+                        </div>
+
+                    <div id="customization-container" style="display: none;">
+                        @{
+                            var user = await SignInManager.UserManager.GetUserAsync(User);
+                            var userId = user?.Id;
+                        }
+                        <!--使用者選項-->
+                        <form id="modalForm" method="post" asp-action="Index">
+                            <input type="hidden" name="ApplicationUserId" value="@userId" />
+                        @*     <input type="hidden" name="ProductName" id="ProductName" /> *@
+                            <input type="hidden" name="ProductId" id="ProductId"/> <!-- 使用 asp-for 屬性直接引用產品ID -->
+                            <label>數量：</label>
+                            <div class="quantity-input">
+                                <input type="button" value="-" class="quantity-button minus">
+                                <input type="number" name="Count" value="1" min="1" class="quantity-field" id="Count">
+                                <input type="button" value="+" class="quantity-button plus">
+                            </div>
+                            <br>
+                         @*    <label>容量：</label>
+                            <div class="size-options">
+                                <label>
+                                    <input type="radio" name="Size" value="大杯" id="size1">
+                                    <span class="button-style">大杯</span>
+                                </label>
+                                <label>
+                                    <input type="radio" name="Size" value="中杯" id="size2">
+                                    <span class="button-style">中杯</span>
+                                </label>
+                            </div>
+ *@
+                            <label>冰量：</label>
+                            <div class="ice-options">
+                                <label>
+                                    <input type="radio" name="Ice" value="正常冰">
+                                    <span>正常冰</span>
+                                </label>
+                                <label>
+                                    <input type="radio" name="Ice" value="少冰">
+                                    <span>少冰</span>
+                                </label>
+                                <label>
+                                    <input type="radio" name="Ice" value="微冰">
+                                    <span>微冰</span>
+                                </label>
+                                <label>
+                                    <input type="radio" name="Ice" value="去冰">
+                                    <span>去冰</span>
+                                </label>
+                            </div>
+                            <label>甜度:</label>
+                            <div class="sweetness-options">
+                                <label>
+                                    <input type="radio" name="Sweetness" value="正常" id="sweet1">
+                                    <span class="button-style">正常</span>
+                                </label>
+                                <label>
+                                    <input type="radio" name="Sweetness" value="半糖" id="sweet2">
+                                    <span class="button-style">半糖</span>
+                                </label>
+                                <label>
+                                    <input type="radio" name="Sweetness" value="三分糖" id="sweet2">
+                                    <span class="button-style">三分糖</span>
+                                </label>
+                                <label>
+                                    <input type="radio" name="Sweetness" value="一分糖" id="sweet3">
+                                    <span class="button-style">一分糖</span>
+                                </label>
+                                <label>
+                                    <input type="radio" name="Sweetness" value="無糖" id="sweet4">
+                                    <span class="button-style">無糖</span>
+                                </label>
+                            </div>
+                            <label>加料：</label>
+                            <div class="toppings-options">
+                                <label>
+                                    <input type="radio" name="Toppings" value="無" id="topping0">
+                                    <span class="button-style">無</span>
+                                </label>
+                                <label>
+                                    <input type="radio" name="Toppings" value="蘆薈+5" id="topping1">
+                                    <span class="button-style">蘆薈+5</span>
+                                </label>
+                                <label>
+                                    <input type="radio" name="Toppings" value="珍珠+10" id="topping2">
+                                    <span class="button-style">珍珠+10</span>
+                                </label>
+                                <label>
+                                    <input type="radio" name="Toppings" value="茶凍+10" id="topping3">
+                                    <span class="button-style">茶凍+10</span>
+                                </label>
+                            </div>
+                            
+                        </form>
+                    </div>
+                </div>
+                       
+                        </div>    
+                        <div class="content2_menu">
+                         <div class="button_change">
+                         <button type="submit" form="modalForm">加入</button>
+                         <button type="submit" form="modalForm" style="display:none;">更新</button>
+            
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+       </div>
+<script>
+ 
+    document.addEventListener('DOMContentLoaded', function () {
+        const form = document.getElementById('modalForm'); // 取得表單元素
+        const productButtons = document.querySelectorAll('.product-button');
+       
+
+        productButtons.forEach(button => {
+            button.addEventListener('click', function (event) {
+                const productId = event.target.dataset.productId;
+
+                document.getElementById('menu-section').style.display = 'none';
+                document.getElementById('customization-container').style.display = 'block';
+             
+                document.getElementById('ProductId').value = productId;
+                document.getElementById('Count').value = 1;
+
+            });
+        });
+
+        form.addEventListener('submit', function (event) {
+            event.preventDefault(); // 防止表單默認的提交行為
+
+            const formData = new FormData(form); 
+            const quantity = formData.get('Count');
+            const size = formData.get('Size');
+            const ice = formData.get('Ice');
+            const sweetness = formData.get('Sweetness');
+            const toppings = formData.get('Toppings');
+            const productId = formData.get('ProductId'); 
+
+            //根據產品ID獲取名稱
+            fetch(`/Customer/Home/GetProductById?productId=${productId}`)
+                .then(response => response.text())
+                .then(productName => {
+                    // 獲取價格
+                    fetch(`/Customer/Home/GetProductPrice?productId=${productId}&size=${size}`)
+                        .then(response => response.text())
+                        .then(price => {
+                            // 計算加料的總價格
+                            let toppingsPrice = 0;
+                            if (toppings.includes("無")) {
+                                toppingsPrice += 0;
+                            }
+                            if (toppings.includes("珍珠+10")) {
+                                toppingsPrice += 10;
+                            }
+                            if (toppings.includes("蘆薈+5")) {
+                                toppingsPrice += 5;
+                            }
+                            if (toppings.includes("茶凍+10")) {
+                                toppingsPrice += 10;
+                            }
+
+                            const totalPrice = (parseInt(price) + toppingsPrice) * quantity;
+                            //創建顯示
+                            const newItem = document.createElement('div');
+                            newItem.classList.add('item');
+                            newItem.innerHTML = `
+                            <div>
+                            <span style="font-weight:900;color:black;font-size:20px;">${productName}</span>
+                            <span>$ ${price}</span>
+                            <span>${quantity}</span>
+                            <span>$${totalPrice}</span>
+                            <p style="font-size:16px;color:#908982;margin:0px;">
+                              ${ice}/${sweetness}
+                            </p>
+                            <p style=background-color:#E2C6C4;>加料：${toppings}</p>
+                            </div>
+                             `
+                                ;
+                                // 在創建新的HTML元素後，為其添加點擊事件
+                                newItem.addEventListener('click', function () {
+                                document.getElementById('customization-container').style.display = 'block';
+                                document.getElementById('menu-section').style.display = 'none';
+                                // 將選擇內容填充到表單中
+                                document.getElementById('Count').value = quantity;
+                                document.querySelector(`input[name="Ice"][value="${ice}"]`).checked = true;
+                                document.querySelector(`input[name="Sweetness"][value="${sweetness}"]`).checked = true;
+                                document.querySelector(`input[name="Toppings"][value="${toppings}"]`).checked = true;
+                            });
+
+                            // 編號
+                            const itemNumber = document.querySelectorAll('.item').length + 1;
+                            newItem.insertAdjacentHTML('afterbegin', `<span>${itemNumber}.</span>`);
+
+                            // 加到指定的位置
+                            const secondDiv = document.querySelector('.second');
+                            secondDiv.appendChild(newItem);
+
+                           
+                           
+                            // 監聽數量輸入框的變化
+
+                            document.getElementById('Count').addEventListener('change', function () {
+                            // 更新顯示的總價格
+                                const newQuantity = parseInt(this.value);
+                                const newTotalPrice = newQuantity * (parseInt(price) + toppingsPrice);
+                                document.getElementById('totalPrice').textContent = `$${newTotalPrice}`;
+                            });
+                          
+                            const iceOptions = document.querySelectorAll('input[name="Ice"]');
+                            iceOptions.forEach(option => {
+                                option.addEventListener('change', function () {
+                            
+                                    const iceValue = this.value;
+                                    // 在 newItem 中查找並更新冰量顯示
+                                    const newItem = document.querySelector('.item');
+                                    newItem.querySelector('p').textContent = iceValue + '/' + sweetness;
+                                });
+                            });
+
+                            const sweetnessOptions = document.querySelectorAll('input[name="Sweetness"]');
+                            sweetnessOptions.forEach(option => {
+                                option.addEventListener('change', function () {
+                                    // 更新顯示的甜度
+                                    const sweetnessValue = this.value;
+
+                                    // 在 newItem 中查找並更新甜度顯示
+                                    const newItem = document.querySelector('.item');
+                                    const iceValue = newItem.querySelector('p').textContent.split('/')[0]; // 獲取當前的冰量值
+                                    newItem.querySelector('p').textContent = iceValue + '/' + sweetnessValue;
+                                });
+                            });
+
+
+
+
+                        });
+              
+              //添加購物車
+
+            fetch('@Url.Action("Index", "Home")', {
+                method: 'POST',
+                body: formData
+            })
+             
+                .then(data => {
+                
+                    console.log(data); 
+                })
+                        .catch(error => {
+                            console.log('Error:', error);
+                        });
+
+                    document.getElementById('menu-section').style.display = 'block';
+                    document.getElementById('customization-container').style.display = 'none';
+
+                });
+    });
+    });
+</script>
